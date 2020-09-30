@@ -1,38 +1,53 @@
 package me.huar.sb_kotlin.domain
 
-import com.fasterxml.jackson.annotation.JsonFormat
 import lombok.Data
-import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(name = "users", schema = "spring_kotlin")
 @Data
-open class UsersEntity {
-
+@Table(name = "users", schema = "spring_kotlin")
+open class UsersEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     open var id: Int? = null
 
-    @Column(name = "uuid")
+    @Basic
+    @Column(name = "uuid", nullable = true)
     open var uuid: String? = null
 
-    @Column(name = "username")
+    @Column(name = "username", nullable = false)
     open var username: String? = null
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     open var password: String? = null
 
-    @Column(name = "user_phone")
-    open var user_phone: String? = null
+    @Column(name = "mobile", nullable = true)
+    open var mobile: String? = null
 
-    @Column(name = "user_birthday")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone="GMT+8")
-    open var user_birthday: Date? = null
+    @Column(name = "birthday", nullable = true)
+    open var birthday: java.sql.Timestamp? = null
 
-    @Column(name = "user_avatar")
-    open var user_avatar: String? = null
+    @Column(name = "avatar", nullable = true)
+    open var avatar: String? = null
+
+    @Column(name = "email", nullable = true)
+    open var email: String? = null
+
+    @Column(name = "level", nullable = true)
+    open var level: Int? = null
+
+    @Column(name = "gender", nullable = true)
+    open var gender: Int? = null
+
+    @Column(name = "avatar_text", nullable = true)
+    open var avatar_text: String? = null
+
+    @Column(name = "token", nullable = true)
+    open var token: String? = null
+
+    @Column(name = "createtime", nullable = true)
+    open var createtime: java.sql.Timestamp? = null
 
 
     override fun toString(): String =
@@ -41,11 +56,15 @@ open class UsersEntity {
                     "uuid = $uuid " +
                     "username = $username " +
                     "password = $password " +
-                    "user_phone = $user_phone " +
-                    "user_birthday = $user_birthday " +
-                    "user_avatar = $user_avatar " +
+                    "mobile = $mobile " +
+                    "birthday = $birthday " +
+                    "avatar = $avatar " +
+                    "email = $email " +
+                    "level = $level " +
+                    "gender = $gender " +
+                    "avatarText = $avatar_text " +
+                    "token = $token " +
+                    "createtime = $createtime " +
                     ")"
-
-
 }
 

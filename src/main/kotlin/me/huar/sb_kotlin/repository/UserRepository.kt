@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface UserRepository : CrudRepository<UsersEntity, Long> {
-    @Query(value = "select * from users where user_phone= :#{#map[\"user_phone\"]} and password= :#{#map[\"password\"]}", nativeQuery = true)
+    @Query(value = "select * from users where mobile= :#{#map[\"mobile\"]} and password= :#{#map[\"password\"]}", nativeQuery = true)
     fun userLogin(@Param("map") map: HashMap<String, Any>?): MutableList<UsersEntity>?
 
 }
